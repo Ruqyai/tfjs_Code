@@ -1,11 +1,11 @@
-# tfjs
+# tfjs_Code
 
 A repository contains examples about how converting TensorFlow/Keras models into TensorFlow.js
 
 ## Develop ML with JavaScript
 ### Get started with TensorFlow.js  
 index.html [here](https://github.com/Ruqyai/tfjs_Code/blob/main/index.html)     
-Demo [here](https://Ruqyai.github.io/tfjs_Code/)    
+Demo [here](https://Ruqyai.github.io/tfjs_Code)    
 
 ## Simple Example
 Folder [here](https://github.com/Ruqyai/tfjs_Code/tree/main/Simple%20Example)     
