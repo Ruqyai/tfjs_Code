@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.1/dist/tf.min.js"></script>
+</head>
+<script>
+
+    var model;
+
+    window.onload = function () {
+        init();
+        document.getElementById("submit").addEventListener("click", prediction);
+    }   
+
+    async function init() {
+
+        document.getElementById('status').innerHTML = 'Loading model ...'
+        model = await tf.loadLayersModel('model/model.json')
+        console.log('Start loading model')
+        document.getElementById('status').innerHTML = 'Model loaded'
+        console.log('Finish loading model')
+    }
+
+    function prediction() {
+
+        input1 = parseFloat(document.getElementById("input1").value)
+        console.log(input1)
+        input2 = parseFloat(document.getElementById("input2").value)
+        console.log(input2)
+        input3 = parseFloat(document.getElementById("input3").value)
+        console.log(input3)
+        input4 = parseFloat(document.getElementById("input4").value)
+        console.log(input4)
+
+        input = tf.tensor2d([input1, input2, input3, input4], [1, 4])
+        console.log(input)
+
+        predict = model.predict(input)
+
+        document.getElementById('result').innerHTML = "The predicted price is   : " + predict.dataSync()[0].toFixed(2) + " $"
+    }
+      
+</script>
+
+<body>
+
+    <h1>Predict a Home Price </h1>
+
+    <p id="status"></p>
+
+    <br>
+    Enter the number of bedrooms:
+    <br>
+    <input id="input1" type="number">
+    <br>
+    Enter the number of bathrooms:
+    <br>
+    <input id="input2" type="number">
+    <br>
+    Enter the total house square footage of the house(sqft_living):
+    <br>
+    <input id="input3" type="number">
+    <br>
+    Enter the grade of the house:
+    <br>
+    <input id="input4" type="number">
+    <br>
+    <br>
+    <input id="submit" type="submit" value="Predict">
+
+
+    <p id="result" style="color: red"></p>
+
+</body>
+
+</html>
